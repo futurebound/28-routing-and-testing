@@ -33,8 +33,9 @@ class Dashboard extends React.Component {
 
   handleRemoveNote(event) {
     let id = event.target.id;
+    console.log('targetId in dashboard', event.target.id)
 
-    this.setState({notes: this.state.notes.filter(note => note.id !== note)})
+    this.setState({notes: this.state.notes.filter(note => note.id !== id)})
   }
 
   // change the <ul> to be <NoteList /> instead of the ul, and add the ul to that componenet

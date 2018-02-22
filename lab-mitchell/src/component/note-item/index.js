@@ -1,5 +1,5 @@
 import React from 'react';
-import Dashboard from '../dashboard/index'
+
 
 class NoteItem extends React.Component {
   constructor(props) {
@@ -27,7 +27,7 @@ class NoteItem extends React.Component {
             <li key={index}>
               <p>Title: {note.title}</p>
               <p>Content: {note.content}</p>
-              <button id={this.props.notes.note.id} onClick={this.handleOnClick}>Delete</button>
+              <button id={note.id} onClick={this.handleOnClick}>Delete</button>
             </li>
           )
         }
