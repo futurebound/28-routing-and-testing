@@ -1,4 +1,5 @@
 import React from 'react';
+import Dashboard from '../dashboard/index';
 
 class NoteCreateForm extends React.Component {
   constructor(props) {
@@ -23,6 +24,7 @@ class NoteCreateForm extends React.Component {
     event.preventDefault();
 
     this.props.handleAddNote(this.state);
+    console.log(this.props.notes);
     // CLEARING THE FORM AFTER ADD
     this.setState({
       title: '',
@@ -32,7 +34,6 @@ class NoteCreateForm extends React.Component {
 
   handleChange(event) {
     let {name, value} = event.target;
-    // name will be the name of the input we are working with, that how [] bracket notation works yo
     this.setState({
       [name]: value,
     })

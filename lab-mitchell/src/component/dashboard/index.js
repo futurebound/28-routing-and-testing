@@ -1,5 +1,6 @@
 import React from 'react';
 import NoteCreateForm from '../note-create-form/index';
+import NoteList from '../note-list/index';
 import uuid from 'uuid';
 
 class Dashboard extends React.Component {
@@ -23,8 +24,6 @@ class Dashboard extends React.Component {
     note.id = uuid.v1();
     note.editing = false;
     note.completed = false;
-    note.content = '';
-    note.title = '';
     console.log('note', note);
 
     this.setState(previousState => {
@@ -32,13 +31,10 @@ class Dashboard extends React.Component {
     });
   };
 
-  handleRemoveNote(id) {
-    let newState = this.state.notes.slice();
-    if(newState.indexOf(note.id) > -1) {
-      newState.splice(newState.indexOf(note.id), 1);
+  handleRemoveNote(event) {
+    let id = event.target.id;
 
-      this.setState({notes: newState})
-    }
+    this.setState({notes: this.state.notes.filter(note => note.id !== note)})
   }
 
   // change the <ul> to be <NoteList /> instead of the ul, and add the ul to that componenet
@@ -46,14 +42,9 @@ class Dashboard extends React.Component {
     return(
       <div>
         <h1>Dashboard</h1>
-        <NoteCreateForm handleAddNote={this.handleAddNote}/>
-        <ul>
-          {
-            this.state.notes.map((note, index) =>
-              <li key={index}>{note.name}:${note.price}</li>
-            )
-          }
-        </ul>
+        <NoteCreateForm handleAddNote={this.handleAddNote} notes={this.state.notes}/>
+        <h2>List</h2>
+        <NoteList handleRemoveNote={this.handleRemoveNote} notes={this.state.notes}/>
       </div>
     )
   };
