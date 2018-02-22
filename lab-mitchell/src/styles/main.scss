@@ -1,4 +1,20 @@
-p {
-  color: green;
-  border: 1px solid pink;
+$primary-color: #333;
+$secondary-color: gray;
+$tertiary-color: pink;
+
+body {
+  background-color: $secondary-color;
+}
+
+h1, h2 {
+  color: $primary-color;
+}
+
+button, input {
+  color: $primary-color;
+  background-color: $tertiary-color;
+}
+
+input {
+  margin-right: 2%;
 }

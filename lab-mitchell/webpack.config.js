@@ -5,8 +5,10 @@
 // before ^^^ happens, we can't use the awesomesauce in ES6 in this file, liek import/exports syntax
 
 const HtmlPlugin = require('html-webpack-plugin'); //helps when using the [hash] things
-// const ExtractTextPlugin = require('extract-text-webpack-plugin'); //for the CSS things
+const ExtractTextPlugin = require('extract-text-webpack-plugin'); //for the CSS things
 
+
+// this is super ugly. will not be including webpackConfig again in every single thing
 const webpackConfig = module.exports = {};
 
 webpackConfig.entry = `${__dirname}/src/main.js`;
@@ -18,6 +20,7 @@ webpackConfig.output = {
 
 webpackConfig.plugins = [
   new HtmlPlugin(),
+  new ExtractTextPlugin('bundle.[hash].css')
 ]
 
 webpackConfig.module = {
@@ -26,11 +29,15 @@ webpackConfig.module = {
       test: /\.js$/, // the $ means THE END of the thing, not every. the regex is already the every part
       exclude: /node_modules/,
       loader: 'babel-loader',
+    },
+    {
+      test: /\.scss$/, 
+      loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader']),
     }
   ]
 };
 
-webpackConfig.devtool = 'eval-source-map';
+webpackConfig.devtool = 'source-maps';
 
 webpackConfig.devServer = {
   historyApiFallback: true, //can keep serving index.js all the time and let react determine wwhat we actually show based on the route we have, pushed to the history object. lets us use back/forth buttons properly
