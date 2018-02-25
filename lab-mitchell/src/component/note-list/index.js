@@ -7,7 +7,6 @@ class NoteList extends React.Component {
     super(props);
   };
 
-  // change the <ul> to be <NoteList /> instead of the ul, and add the ul to that componenet
   render() {
     return (
         <ul>
