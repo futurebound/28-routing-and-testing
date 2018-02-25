@@ -4,12 +4,7 @@ class NoteItem extends React.Component {
   constructor(props) {
     super(props);
 
-    let memberFunctions = Object.getOwnPropertyNames(NoteItem.prototype);
-    for (let functionName of memberFunctions) {
-      if (functionName.startsWith('handle')) {
-        this[functionName] = this[functionName].bind(this);
-      }
-    }
+    this.handleOnClick = this.handleOnClick.bind(this);
   };
 
   handleOnClick(event) {
