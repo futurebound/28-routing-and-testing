@@ -7,7 +7,7 @@ Enzyme.configure({ adapter: new Adapter() });
 
 import NoteCreateForm from '../component/note-create-form/index';
 
-describe('#dashboard', function () {
+describe('#note-create-form', function () {
   describe('testing initial state', () => {
     test('initial state, form title', () => {
       let mountedNoteCreateForm = Enzyme.mount(<NoteCreateForm />);

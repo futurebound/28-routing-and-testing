@@ -11,7 +11,6 @@ describe('#dashboard', function() {
   describe('testing initial state', () => {
     test('initial state, notes', () => {
       let mountedDashboard = Enzyme.mount(<Dashboard />);
-
       expect(mountedDashboard.state('notes')).toEqual([]);
     });
   });
