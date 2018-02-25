@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Route, Link} from 'react-router-dom'; //allows us to define specific routes that we want, switch to different routes without reloading the application
+import {BrowserRouter, Route, Link} from 'react-router-dom';
 import Dashboard from '../dashboard/index';
 import Landing from '../landing/index';
 

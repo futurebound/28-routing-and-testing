@@ -13,9 +13,7 @@ class NoteItem extends React.Component {
   };
 
   handleOnClick(event) {
-    // event.preventDefault();
     this.props.handleRemoveNote(event);
-    console.log(event.target.id);
   }
 
   render() {

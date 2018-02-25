@@ -3,9 +3,9 @@ import Dashboard from '../dashboard/index';
 
 class NoteCreateForm extends React.Component {
   constructor(props) {
-    super(props); //super(props); is calling the constructor, so to be able to use 'this.state = {}' we need to call the constructor
+    super(props);
 
-    this.state = { //default state of form
+    this.state = {
       title: '',
       content: '',
     };
@@ -18,7 +18,6 @@ class NoteCreateForm extends React.Component {
     event.preventDefault();
 
     this.props.handleAddNote(this.state);
-    console.log(this.props.notes);
     this.setState({
       title: '',
       content: '',
@@ -32,7 +31,6 @@ class NoteCreateForm extends React.Component {
     })
   }
 
-  // Lifecycle Hook
   render() {
     return(
       <form className='note-form' onSubmit={this.handleSubmit}>
