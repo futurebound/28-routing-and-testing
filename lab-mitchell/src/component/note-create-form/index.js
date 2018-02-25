@@ -10,22 +10,15 @@ class NoteCreateForm extends React.Component {
       content: '',
     };
 
-    // BINDING HANDLERS -- so we don't have to do the line 16 part again and again for each. kinda a lot tho.
-    let memberFunctions = Object.getOwnPropertyNames(NoteCreateForm.prototype);
-    for(let functionName of memberFunctions) {
-      if(functionName.startsWith('handle')) {
-        this[functionName] = this[functionName].bind(this);
-      }
-    }
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  // Member Function
   handleSubmit(event) {
     event.preventDefault();
 
     this.props.handleAddNote(this.state);
     console.log(this.props.notes);
-    // CLEARING THE FORM AFTER ADD
     this.setState({
       title: '',
       content: '',
@@ -50,6 +43,7 @@ class NoteCreateForm extends React.Component {
           value={this.state.title}
           onChange={this.handleChange}
         />
+
         <input 
           type='text'
           name='content'
@@ -57,6 +51,7 @@ class NoteCreateForm extends React.Component {
           value={this.state.content}
           onChange={this.handleChange}
         />
+
         <button type='submit'>submit</button>
       </form>
     )
